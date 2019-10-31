@@ -224,6 +224,22 @@ void motor_action(const geometry_msgs::Twist::ConstPtr& msg)
 
 	VCI_Transmit(VCI_USBCAN2, 0, 0, send, 1);
 	}
+	
+	else if(msg->linear.x==-3)
+	{
+	send[0].ID=0x07;
+	send[0].Data[0] = 0x0F;
+        send[1].Data[0] = 0x0F;
+        send[0].Data[1] = 0xA0;
+        send[1].Data[1] = 0xA0;
+        send[0].Data[2] = 0xFE;
+        send[1].Data[2] = 0xFE;
+        send[0].Data[3] = 0x5C;
+        send[1].Data[3] = 0x5C;
+
+	VCI_Transmit(VCI_USBCAN2, 0, 0, send, 1);
+	}
+	
 	else if(msg->linear.x==-2)
         {
 	send[0].ID=0x07;
@@ -273,4 +289,6 @@ void motor_action(const geometry_msgs::Twist::ConstPtr& msg)
 	usleep(10000);
 	VCI_Transmit(VCI_USBCAN2, 0, 0, send, 1);	
         }
+	
+	
 } 

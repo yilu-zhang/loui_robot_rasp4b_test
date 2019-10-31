@@ -13,7 +13,8 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   geometry_msgs
   message_generation
-)
+  )
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -122,6 +123,7 @@ include_directories(
 include
   ${catkin_INCLUDE_DIRS}
 )
+#FIND_LIBRARY(WIRINGPI_LIBRARY wiringPi)
 link_directories(
    lib
    ${catkin_LIB_DIRS})
@@ -131,10 +133,14 @@ target_link_libraries(control
   ${catkin_LIBRARIES}
   controlcan)
 
-add_executable(feedback src/feedback.cpp)
-target_link_libraries(feedback
-  ${catkin_LIBRARIES}
-  controlcan)
+add_executable(ircontrol src/ircontrol.cpp)
+target_link_libraries(ircontrol
+  ${catkin_LIBRARIES} wiringPi lirc_client)
+
+#add_executable(feedback src/feedback.cpp)
+#target_link_libraries(feedback
+# ${catkin_LIBRARIES}
+#  controlcan)
 
 #add_dependencies(control_feedback ${PROJECT_NAME}_generate_messages_cpp)
 ## Declare a C++ library
