@@ -14,6 +14,27 @@
 #include "geometry_msgs/Twist.h"
 #include "control_can_motor/Motor.h"
 
+#include  <wiringPiI2C.h>
+#include  <math.h>
+
+int fd;
+int acclX, acclY, acclZ;
+int gyroX, gyroY, gyroZ;
+//double acclX_scaled, acclY_scaled, acclZ_scaled;
+//double gyroX_scaled, gyroY_scaled, gyroZ_scaled;
+
+int read_word_2c(int addr)
+{
+  int val;
+  val = wiringPiI2CReadReg8(fd, addr);
+  val = val << 8;
+  val += wiringPiI2CReadReg8(fd, addr+1);
+  if (val >= 0x8000)
+    val = -(65536 - val);
+
+  return val;
+}
+
 void motor_action(const geometry_msgs::Twist::ConstPtr& msg);
 
 int main(int argc, char **argv)
@@ -25,6 +46,10 @@ int main(int argc, char **argv)
 
 	ros::Subscriber sub= n.subscribe("/turtle1/cmd_vel", 100,motor_action);
 	ros::Publisher motor_pub = n.advertise<control_can_motor::Motor>("motor_info", 10);
+	
+	fd = wiringPiI2CSetup (0x68);
+	wiringPiI2CWriteReg8 (fd,0x6B,0x00);//disable sleep mode 
+	printf("set 0x6B=%X\n",wiringPiI2CReadReg8 (fd,0x6B));
 
 	if(VCI_OpenDevice(VCI_USBCAN2,0,0)==1)//打开设备
 	{
@@ -176,6 +201,21 @@ int main(int argc, char **argv)
 			motor_real.current=(rec[i].Data[0]<<8)|rec[i].Data[1];
 			motor_real.velocity=(rec[i].Data[2]<<8)|rec[i].Data[3];
 			motor_real.position=(rec[i].Data[4]<<24)|(rec[i].Data[3]<<16)|(rec[i].Data[2]<<8)|rec[i].Data[1];
+			
+			acclX = read_word_2c(0x3B);
+			acclY = read_word_2c(0x3D);
+			acclZ = read_word_2c(0x3F);
+			motor_real.acclX_scaled = acclX *100000/ 16384.0;
+			motor_real.acclY_scaled = acclY *100000/ 16384.0;
+			motor_real.acclZ_scaled = acclZ *100000/ 16384.0;
+			
+			gyroX = read_word_2c(0x43);
+			gyroY = read_word_2c(0x45);
+			gyroZ = read_word_2c(0x47);
+			motor_real.gyroX_scaled = gyroX *100000/ 131.0;
+			motor_real.gyroY_scaled = gyroY *100000/ 131.0;
+			motor_real.gyroZ_scaled = gyroZ *100000/ 131.0;
+			
 			motor_pub.publish(motor_real);
                   }
 

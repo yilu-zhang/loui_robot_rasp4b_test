@@ -131,7 +131,7 @@ link_directories(
 add_executable(control src/control.cpp)
 target_link_libraries(control
   ${catkin_LIBRARIES}
-  controlcan)
+  controlcan wiringPi m) 
 
 add_executable(ircontrol src/ircontrol.cpp)
 target_link_libraries(ircontrol

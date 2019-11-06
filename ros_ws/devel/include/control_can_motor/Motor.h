@@ -27,13 +27,25 @@ struct Motor_
     : motor_id(0)
     , current(0)
     , velocity(0)
-    , position(0)  {
+    , position(0)
+    , acclX_scaled(0)
+    , acclY_scaled(0)
+    , acclZ_scaled(0)
+    , gyroX_scaled(0)
+    , gyroY_scaled(0)
+    , gyroZ_scaled(0)  {
     }
   Motor_(const ContainerAllocator& _alloc)
     : motor_id(0)
     , current(0)
     , velocity(0)
-    , position(0)  {
+    , position(0)
+    , acclX_scaled(0)
+    , acclY_scaled(0)
+    , acclZ_scaled(0)
+    , gyroX_scaled(0)
+    , gyroY_scaled(0)
+    , gyroZ_scaled(0)  {
   (void)_alloc;
     }
 
@@ -50,6 +62,24 @@ struct Motor_
 
    typedef int16_t _position_type;
   _position_type position;
+
+   typedef int16_t _acclX_scaled_type;
+  _acclX_scaled_type acclX_scaled;
+
+   typedef int16_t _acclY_scaled_type;
+  _acclY_scaled_type acclY_scaled;
+
+   typedef int16_t _acclZ_scaled_type;
+  _acclZ_scaled_type acclZ_scaled;
+
+   typedef int16_t _gyroX_scaled_type;
+  _gyroX_scaled_type gyroX_scaled;
+
+   typedef int16_t _gyroY_scaled_type;
+  _gyroY_scaled_type gyroY_scaled;
+
+   typedef int16_t _gyroZ_scaled_type;
+  _gyroZ_scaled_type gyroZ_scaled;
 
 
 
@@ -129,12 +159,12 @@ struct MD5Sum< ::control_can_motor::Motor_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "37986fc1a8f0287c7889edd26eaf11a1";
+    return "af96eca82971ebfe9bcfd9370b30adab";
   }
 
   static const char* value(const ::control_can_motor::Motor_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x37986fc1a8f0287cULL;
-  static const uint64_t static_value2 = 0x7889edd26eaf11a1ULL;
+  static const uint64_t static_value1 = 0xaf96eca82971ebfeULL;
+  static const uint64_t static_value2 = 0x9bcfd9370b30adabULL;
 };
 
 template<class ContainerAllocator>
@@ -157,6 +187,19 @@ struct Definition< ::control_can_motor::Motor_<ContainerAllocator> >
 int16 current\n\
 int16 velocity\n\
 int16 position\n\
+int16 acclX_scaled\n\
+int16 acclY_scaled\n\
+int16 acclZ_scaled\n\
+int16 gyroX_scaled\n\
+int16 gyroY_scaled\n\
+int16 gyroZ_scaled\n\
+#double acclX_scaled\n\
+#double acclY_scaled\n\
+#double acclZ_scaled\n\
+#double gyroX_scaled\n\
+#double gyroY_scaled\n\
+#double gyroZ_scaled\n\
+\n\
 ";
   }
 
@@ -179,6 +222,12 @@ namespace serialization
       stream.next(m.current);
       stream.next(m.velocity);
       stream.next(m.position);
+      stream.next(m.acclX_scaled);
+      stream.next(m.acclY_scaled);
+      stream.next(m.acclZ_scaled);
+      stream.next(m.gyroX_scaled);
+      stream.next(m.gyroY_scaled);
+      stream.next(m.gyroZ_scaled);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -205,6 +254,18 @@ struct Printer< ::control_can_motor::Motor_<ContainerAllocator> >
     Printer<int16_t>::stream(s, indent + "  ", v.velocity);
     s << indent << "position: ";
     Printer<int16_t>::stream(s, indent + "  ", v.position);
+    s << indent << "acclX_scaled: ";
+    Printer<int16_t>::stream(s, indent + "  ", v.acclX_scaled);
+    s << indent << "acclY_scaled: ";
+    Printer<int16_t>::stream(s, indent + "  ", v.acclY_scaled);
+    s << indent << "acclZ_scaled: ";
+    Printer<int16_t>::stream(s, indent + "  ", v.acclZ_scaled);
+    s << indent << "gyroX_scaled: ";
+    Printer<int16_t>::stream(s, indent + "  ", v.gyroX_scaled);
+    s << indent << "gyroY_scaled: ";
+    Printer<int16_t>::stream(s, indent + "  ", v.gyroY_scaled);
+    s << indent << "gyroZ_scaled: ";
+    Printer<int16_t>::stream(s, indent + "  ", v.gyroZ_scaled);
   }
 };
 

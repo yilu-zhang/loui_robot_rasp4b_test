@@ -22,6 +22,12 @@ class Motor {
       this.current = null;
       this.velocity = null;
       this.position = null;
+      this.acclX_scaled = null;
+      this.acclY_scaled = null;
+      this.acclZ_scaled = null;
+      this.gyroX_scaled = null;
+      this.gyroY_scaled = null;
+      this.gyroZ_scaled = null;
     }
     else {
       if (initObj.hasOwnProperty('motor_id')) {
@@ -48,6 +54,42 @@ class Motor {
       else {
         this.position = 0;
       }
+      if (initObj.hasOwnProperty('acclX_scaled')) {
+        this.acclX_scaled = initObj.acclX_scaled
+      }
+      else {
+        this.acclX_scaled = 0;
+      }
+      if (initObj.hasOwnProperty('acclY_scaled')) {
+        this.acclY_scaled = initObj.acclY_scaled
+      }
+      else {
+        this.acclY_scaled = 0;
+      }
+      if (initObj.hasOwnProperty('acclZ_scaled')) {
+        this.acclZ_scaled = initObj.acclZ_scaled
+      }
+      else {
+        this.acclZ_scaled = 0;
+      }
+      if (initObj.hasOwnProperty('gyroX_scaled')) {
+        this.gyroX_scaled = initObj.gyroX_scaled
+      }
+      else {
+        this.gyroX_scaled = 0;
+      }
+      if (initObj.hasOwnProperty('gyroY_scaled')) {
+        this.gyroY_scaled = initObj.gyroY_scaled
+      }
+      else {
+        this.gyroY_scaled = 0;
+      }
+      if (initObj.hasOwnProperty('gyroZ_scaled')) {
+        this.gyroZ_scaled = initObj.gyroZ_scaled
+      }
+      else {
+        this.gyroZ_scaled = 0;
+      }
     }
   }
 
@@ -61,6 +103,18 @@ class Motor {
     bufferOffset = _serializer.int16(obj.velocity, buffer, bufferOffset);
     // Serialize message field [position]
     bufferOffset = _serializer.int16(obj.position, buffer, bufferOffset);
+    // Serialize message field [acclX_scaled]
+    bufferOffset = _serializer.int16(obj.acclX_scaled, buffer, bufferOffset);
+    // Serialize message field [acclY_scaled]
+    bufferOffset = _serializer.int16(obj.acclY_scaled, buffer, bufferOffset);
+    // Serialize message field [acclZ_scaled]
+    bufferOffset = _serializer.int16(obj.acclZ_scaled, buffer, bufferOffset);
+    // Serialize message field [gyroX_scaled]
+    bufferOffset = _serializer.int16(obj.gyroX_scaled, buffer, bufferOffset);
+    // Serialize message field [gyroY_scaled]
+    bufferOffset = _serializer.int16(obj.gyroY_scaled, buffer, bufferOffset);
+    // Serialize message field [gyroZ_scaled]
+    bufferOffset = _serializer.int16(obj.gyroZ_scaled, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -76,11 +130,23 @@ class Motor {
     data.velocity = _deserializer.int16(buffer, bufferOffset);
     // Deserialize message field [position]
     data.position = _deserializer.int16(buffer, bufferOffset);
+    // Deserialize message field [acclX_scaled]
+    data.acclX_scaled = _deserializer.int16(buffer, bufferOffset);
+    // Deserialize message field [acclY_scaled]
+    data.acclY_scaled = _deserializer.int16(buffer, bufferOffset);
+    // Deserialize message field [acclZ_scaled]
+    data.acclZ_scaled = _deserializer.int16(buffer, bufferOffset);
+    // Deserialize message field [gyroX_scaled]
+    data.gyroX_scaled = _deserializer.int16(buffer, bufferOffset);
+    // Deserialize message field [gyroY_scaled]
+    data.gyroY_scaled = _deserializer.int16(buffer, bufferOffset);
+    // Deserialize message field [gyroZ_scaled]
+    data.gyroZ_scaled = _deserializer.int16(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 7;
+    return 19;
   }
 
   static datatype() {
@@ -90,7 +156,7 @@ class Motor {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '37986fc1a8f0287c7889edd26eaf11a1';
+    return 'af96eca82971ebfe9bcfd9370b30adab';
   }
 
   static messageDefinition() {
@@ -100,6 +166,19 @@ class Motor {
     int16 current
     int16 velocity
     int16 position
+    int16 acclX_scaled
+    int16 acclY_scaled
+    int16 acclZ_scaled
+    int16 gyroX_scaled
+    int16 gyroY_scaled
+    int16 gyroZ_scaled
+    #double acclX_scaled
+    #double acclY_scaled
+    #double acclZ_scaled
+    #double gyroX_scaled
+    #double gyroY_scaled
+    #double gyroZ_scaled
+    
     
     `;
   }
@@ -136,6 +215,48 @@ class Motor {
     }
     else {
       resolved.position = 0
+    }
+
+    if (msg.acclX_scaled !== undefined) {
+      resolved.acclX_scaled = msg.acclX_scaled;
+    }
+    else {
+      resolved.acclX_scaled = 0
+    }
+
+    if (msg.acclY_scaled !== undefined) {
+      resolved.acclY_scaled = msg.acclY_scaled;
+    }
+    else {
+      resolved.acclY_scaled = 0
+    }
+
+    if (msg.acclZ_scaled !== undefined) {
+      resolved.acclZ_scaled = msg.acclZ_scaled;
+    }
+    else {
+      resolved.acclZ_scaled = 0
+    }
+
+    if (msg.gyroX_scaled !== undefined) {
+      resolved.gyroX_scaled = msg.gyroX_scaled;
+    }
+    else {
+      resolved.gyroX_scaled = 0
+    }
+
+    if (msg.gyroY_scaled !== undefined) {
+      resolved.gyroY_scaled = msg.gyroY_scaled;
+    }
+    else {
+      resolved.gyroY_scaled = 0
+    }
+
+    if (msg.gyroZ_scaled !== undefined) {
+      resolved.gyroZ_scaled = msg.gyroZ_scaled;
+    }
+    else {
+      resolved.gyroZ_scaled = 0
     }
 
     return resolved;

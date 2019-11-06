@@ -49,6 +49,10 @@ geometry_msgs/Twist.h
 /home/pi/code/loui_robot_rasp4b_test/ros_ws/src/control_can_motor/src/geometry_msgs/Twist.h
 control_can_motor/Motor.h
 /home/pi/code/loui_robot_rasp4b_test/ros_ws/src/control_can_motor/src/control_can_motor/Motor.h
+wiringPiI2C.h
+-
+math.h
+-
 
 /opt/ros/kinetic/include/geometry_msgs/Twist.h
 string
