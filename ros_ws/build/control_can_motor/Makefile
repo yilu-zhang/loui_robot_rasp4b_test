@@ -102,6 +102,17 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -123,17 +134,6 @@ test:
 test/fast: test
 
 .PHONY : test/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -301,6 +301,21 @@ roscpp_generate_messages_eus: control_can_motor/CMakeFiles/roscpp_generate_messa
 roscpp_generate_messages_eus/fast:
 	cd /home/pi/code/loui_robot_rasp4b_test/ros_ws/build && $(MAKE) -f control_can_motor/CMakeFiles/roscpp_generate_messages_eus.dir/build.make control_can_motor/CMakeFiles/roscpp_generate_messages_eus.dir/build
 .PHONY : roscpp_generate_messages_eus/fast
+
+# Convenience name for target.
+control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
+	cd /home/pi/code/loui_robot_rasp4b_test/ros_ws/build && $(MAKE) -f CMakeFiles/Makefile2 control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+.PHONY : control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_lisp: control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+
+.PHONY : roscpp_generate_messages_lisp
+
+# fast build rule for target.
+roscpp_generate_messages_lisp/fast:
+	cd /home/pi/code/loui_robot_rasp4b_test/ros_ws/build && $(MAKE) -f control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+.PHONY : roscpp_generate_messages_lisp/fast
 
 # Convenience name for target.
 control_can_motor/CMakeFiles/roscpp_generate_messages_py.dir/rule:
@@ -663,19 +678,19 @@ control_can_motor_generate_messages_py/fast:
 .PHONY : control_can_motor_generate_messages_py/fast
 
 # Convenience name for target.
-control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
-	cd /home/pi/code/loui_robot_rasp4b_test/ros_ws/build && $(MAKE) -f CMakeFiles/Makefile2 control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+control_can_motor/CMakeFiles/usbcan_test.dir/rule:
+	cd /home/pi/code/loui_robot_rasp4b_test/ros_ws/build && $(MAKE) -f CMakeFiles/Makefile2 control_can_motor/CMakeFiles/usbcan_test.dir/rule
+.PHONY : control_can_motor/CMakeFiles/usbcan_test.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_lisp: control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+usbcan_test: control_can_motor/CMakeFiles/usbcan_test.dir/rule
 
-.PHONY : roscpp_generate_messages_lisp
+.PHONY : usbcan_test
 
 # fast build rule for target.
-roscpp_generate_messages_lisp/fast:
-	cd /home/pi/code/loui_robot_rasp4b_test/ros_ws/build && $(MAKE) -f control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-.PHONY : roscpp_generate_messages_lisp/fast
+usbcan_test/fast:
+	cd /home/pi/code/loui_robot_rasp4b_test/ros_ws/build && $(MAKE) -f control_can_motor/CMakeFiles/usbcan_test.dir/build.make control_can_motor/CMakeFiles/usbcan_test.dir/build
+.PHONY : usbcan_test/fast
 
 src/control.o: src/control.cpp.o
 
@@ -731,6 +746,33 @@ src/ircontrol.cpp.s:
 	cd /home/pi/code/loui_robot_rasp4b_test/ros_ws/build && $(MAKE) -f control_can_motor/CMakeFiles/ircontrol.dir/build.make control_can_motor/CMakeFiles/ircontrol.dir/src/ircontrol.cpp.s
 .PHONY : src/ircontrol.cpp.s
 
+src/usbcan_test.o: src/usbcan_test.cpp.o
+
+.PHONY : src/usbcan_test.o
+
+# target to build an object file
+src/usbcan_test.cpp.o:
+	cd /home/pi/code/loui_robot_rasp4b_test/ros_ws/build && $(MAKE) -f control_can_motor/CMakeFiles/usbcan_test.dir/build.make control_can_motor/CMakeFiles/usbcan_test.dir/src/usbcan_test.cpp.o
+.PHONY : src/usbcan_test.cpp.o
+
+src/usbcan_test.i: src/usbcan_test.cpp.i
+
+.PHONY : src/usbcan_test.i
+
+# target to preprocess a source file
+src/usbcan_test.cpp.i:
+	cd /home/pi/code/loui_robot_rasp4b_test/ros_ws/build && $(MAKE) -f control_can_motor/CMakeFiles/usbcan_test.dir/build.make control_can_motor/CMakeFiles/usbcan_test.dir/src/usbcan_test.cpp.i
+.PHONY : src/usbcan_test.cpp.i
+
+src/usbcan_test.s: src/usbcan_test.cpp.s
+
+.PHONY : src/usbcan_test.s
+
+# target to generate assembly for a file
+src/usbcan_test.cpp.s:
+	cd /home/pi/code/loui_robot_rasp4b_test/ros_ws/build && $(MAKE) -f control_can_motor/CMakeFiles/usbcan_test.dir/build.make control_can_motor/CMakeFiles/usbcan_test.dir/src/usbcan_test.cpp.s
+.PHONY : src/usbcan_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -750,6 +792,8 @@ help:
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_eus"
+	@echo "... edit_cache"
+	@echo "... roscpp_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... control_can_motor_generate_messages_eus"
@@ -775,15 +819,17 @@ help:
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... ircontrol"
 	@echo "... control_can_motor_generate_messages_py"
+	@echo "... usbcan_test"
 	@echo "... test"
-	@echo "... roscpp_generate_messages_lisp"
-	@echo "... edit_cache"
 	@echo "... src/control.o"
 	@echo "... src/control.i"
 	@echo "... src/control.s"
 	@echo "... src/ircontrol.o"
 	@echo "... src/ircontrol.i"
 	@echo "... src/ircontrol.s"
+	@echo "... src/usbcan_test.o"
+	@echo "... src/usbcan_test.i"
+	@echo "... src/usbcan_test.s"
 .PHONY : help
 
 

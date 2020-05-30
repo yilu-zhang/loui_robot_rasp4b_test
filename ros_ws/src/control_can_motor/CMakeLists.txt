@@ -137,6 +137,12 @@ add_executable(ircontrol src/ircontrol.cpp)
 target_link_libraries(ircontrol
   ${catkin_LIBRARIES} wiringPi lirc_client)
 
+add_executable(usbcan_test src/usbcan_test.cpp)
+target_link_libraries(usbcan_test
+  ${catkin_LIBRARIES}
+  controlcan wiringPi m) 
+
+
 #add_executable(feedback src/feedback.cpp)
 #target_link_libraries(feedback
 # ${catkin_LIBRARIES}

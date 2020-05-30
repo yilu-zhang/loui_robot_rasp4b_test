@@ -350,6 +350,19 @@ roscpp_generate_messages_eus/fast:
 .PHONY : roscpp_generate_messages_eus/fast
 
 #=============================================================================
+# Target rules for targets named roscpp_generate_messages_lisp
+
+# Build rule for target.
+roscpp_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_lisp
+.PHONY : roscpp_generate_messages_lisp
+
+# fast build rule for target.
+roscpp_generate_messages_lisp/fast:
+	$(MAKE) -f control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+.PHONY : roscpp_generate_messages_lisp/fast
+
+#=============================================================================
 # Target rules for targets named roscpp_generate_messages_py
 
 # Build rule for target.
@@ -662,17 +675,17 @@ control_can_motor_generate_messages_py/fast:
 .PHONY : control_can_motor_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named roscpp_generate_messages_lisp
+# Target rules for targets named usbcan_test
 
 # Build rule for target.
-roscpp_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_lisp
-.PHONY : roscpp_generate_messages_lisp
+usbcan_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 usbcan_test
+.PHONY : usbcan_test
 
 # fast build rule for target.
-roscpp_generate_messages_lisp/fast:
-	$(MAKE) -f control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make control_can_motor/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-.PHONY : roscpp_generate_messages_lisp/fast
+usbcan_test/fast:
+	$(MAKE) -f control_can_motor/CMakeFiles/usbcan_test.dir/build.make control_can_motor/CMakeFiles/usbcan_test.dir/build
+.PHONY : usbcan_test/fast
 
 # Help Target
 help:
@@ -701,6 +714,7 @@ help:
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_eus"
+	@echo "... roscpp_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... control_can_motor_generate_messages_eus"
@@ -725,7 +739,7 @@ help:
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... ircontrol"
 	@echo "... control_can_motor_generate_messages_py"
-	@echo "... roscpp_generate_messages_lisp"
+	@echo "... usbcan_test"
 .PHONY : help
 
 
